@@ -35,5 +35,5 @@ For example, *findTwoSum({3, 1, 5, 7, 5, 9), 10} should return a *std::pair<int,
 | ---- | ---- | ---- |
 | 1 |   Example case | Correct answer |
 | 2 | Distenct numbers with and without solutions | Correct answer |
-| 3 | Duplicate numbers with and without solutions | Wrong answer |
-| 4 | Performance test with a large list of numbers | Wrong answer | 
+| 3 | Duplicate numbers with and without solutions | Correct answer |
+| 4 | Performance test with a large list of numbers | Correct answer | 
