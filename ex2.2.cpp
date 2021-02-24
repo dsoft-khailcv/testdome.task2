@@ -3,49 +3,39 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
-
+#include <unordered_set>
+#include <map>
 std::pair<int, int> findTwoSum(const std::vector<int> &list, int sum)
 {
     std::vector<int> tmp = list;
-    std::vector<int> result_tmp = list;
+    std::unordered_set<int> list_set;
+    std::map<int, int> list_map;
     std::pair<int, int> result;
-    std::sort(tmp.begin(), tmp.end());
-    std::vector<int>::iterator it_left = tmp.begin();
-    std::vector<int>::iterator it_right = tmp.end() - 1;
-    int tmp_sum = *it_left + *it_right;
-    while (tmp_sum != sum && it_left != it_right)
+    for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end(); ++it)
     {
-        if (tmp_sum > sum)
+        int t = sum - *it;
+        if (list_set.find(t) != list_set.end())
         {
-            it_right--;
-            tmp_sum = *it_left + *it_right;
+            result.first = it - tmp.begin();
+            result.second = list_map.at(t);
+            return result;
         }
         else
-        {
-            it_left++;
-            tmp_sum = *it_left + *it_right;
-        }
+            {
+                list_set.insert(*it);
+                list_map.insert(std::pair<int,int>(*it, it - tmp.begin()));
+            }
     }
-    if ((it_left != it_right) && (tmp_sum == sum))
-    {
-        std::vector<int>::iterator res_first_it = find(result_tmp.begin(), result_tmp.end(), *it_left);
-        result.first = res_first_it - result_tmp.begin();
-        result.second = find(res_first_it + 1, result_tmp.end(), *it_right) - result_tmp.begin();
-    }
-    else
-    {
-        result.first = -1;
-        result.second = -1;
-    }
-
+    result.first = -1;
+    result.second = -1;
     return result;
 }
 
 #ifndef RunTests
 int main()
 {
-    std::vector<int> list = {5,55,5,5,5,5,5};
-    std::pair<int, int> indices = findTwoSum(list, 10);
+        std::vector<int> list = {3, 1, 5, 7, 5, 9};
+    std::pair<int, int> indices = findTwoSum(list, 8);
     std::cout << indices.first << '\n'
               << indices.second;
 }
