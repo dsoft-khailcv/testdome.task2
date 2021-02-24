@@ -60,7 +60,7 @@ In the example below, when call to *contains(n2, 3)* will return *true* since a 
 
 
 ## Complile and Run
-    g++ -std=c++17 -o ex2.1 ex2.2.cpp -Wall
+    g++ -std=c++17 -o ex2.1 ex2.1.cpp -Wall
     sudo ./ex2.1
 ## Test cases
 | Case | Test | Result |
