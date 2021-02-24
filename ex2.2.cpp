@@ -11,7 +11,7 @@ std::pair<int, int> findTwoSum(const std::vector<int> &list, int sum)
     std::pair<int, int> result;
     std::sort(tmp.begin(), tmp.end());
     std::vector<int>::iterator it_left = tmp.begin();
-    std::vector<int>::iterator it_right = tmp.end();
+    std::vector<int>::iterator it_right = tmp.end() - 1;
     int tmp_sum = *it_left + *it_right;
     while (tmp_sum != sum && it_left != it_right)
     {
