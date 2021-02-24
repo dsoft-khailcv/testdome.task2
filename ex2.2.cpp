@@ -30,7 +30,7 @@ std::pair<int, int> findTwoSum(const std::vector<int> &list, int sum)
     {
         std::vector<int>::iterator res_first_it = find(result_tmp.begin(), result_tmp.end(), *it_left);
         result.first = res_first_it - result_tmp.begin();
-        result.second = find(res_first_it, result_tmp.end(), *it_right) - result_tmp.begin();
+        result.second = find(res_first_it + 1, result_tmp.end(), *it_right) - result_tmp.begin();
     }
     else
     {
@@ -44,8 +44,8 @@ std::pair<int, int> findTwoSum(const std::vector<int> &list, int sum)
 #ifndef RunTests
 int main()
 {
-    std::vector<int> list = {3, 1, 5, 7, 5, 9, 3, 1, 5,734, 42, 65, 56, 76,12, 43, 7, 5, 9, 43, 65, 654, 675, 75, 35, 57, 3};
-    std::pair<int, int> indices = findTwoSum(list, 6);
+    std::vector<int> list = {5,55,5,5,5,5,5};
+    std::pair<int, int> indices = findTwoSum(list, 10);
     std::cout << indices.first << '\n'
               << indices.second;
 }
